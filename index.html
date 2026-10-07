@@ -93,7 +93,6 @@
                     <button onclick="switchPublicTab('organization')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Organization</button>
                     <button onclick="switchPublicTab('services')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Services</button>
                     <button onclick="switchPublicTab('philosophy')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Philosophy</button>
-                    <button onclick="switchPublicTab('techniques')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Techniques</button>
                     <button onclick="switchPublicTab('unions')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Unions</button>
                     <button onclick="switchPublicTab('verification')" class="nav-btn px-2.5 py-2 text-slate-800 hover:text-subtle-600 font-semibold transition-colors">Advanced Rank</button>
                     <button onclick="switchPublicTab('payment')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Contact</button>
@@ -118,7 +117,6 @@
             <button onclick="switchPublicTab('organization')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Organization</button>
             <button onclick="switchPublicTab('services')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Services</button>
             <button onclick="switchPublicTab('philosophy')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Philosophy</button>
-            <button onclick="switchPublicTab('techniques')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Techniques</button>
             <button onclick="switchPublicTab('unions')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Unions</button>
             <button onclick="switchPublicTab('verification')" class="block w-full text-left px-3 py-2 text-slate-800 font-semibold hover:bg-slate-50 rounded">Advanced Rank Verification</button>
             <button onclick="switchPublicTab('payment')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Contact & Payment</button>
@@ -175,7 +173,7 @@
             </div>
         </section>
 
-        <!-- 2. DYNAMIC PUBLIC SECTIONS (General, Org Members, Country Reps, Masters, Org, Philosophy, Techniques, Unions) -->
+        <!-- 2. DYNAMIC PUBLIC SECTIONS (General, Org Members, Country Reps, Masters, Org, Philosophy, Unions) -->
         <section id="pub-dynamic" class="public-tab hidden max-w-7xl mx-auto px-4 py-10">
             <div class="border-b border-slate-200 pb-4 mb-6">
                 <span id="pubDynBadge" class="text-xs font-normal text-slate-500 uppercase tracking-wider">Official Section</span>
@@ -377,7 +375,6 @@
                 <button id="admTab-masters" onclick="switchAdminTab('masters')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Masters</button>
                 <button id="admTab-organization" onclick="switchAdminTab('organization')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Organization</button>
                 <button id="admTab-philosophy" onclick="switchAdminTab('philosophy')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Philosophy</button>
-                <button id="admTab-techniques" onclick="switchAdminTab('techniques')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Techniques</button>
                 <button id="admTab-unions" onclick="switchAdminTab('unions')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Unions</button>
                 <button id="admTab-verification" onclick="switchAdminTab('verification')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Verification Reg</button>
             </div>
@@ -578,14 +575,6 @@
                     { id: 'phi-2', title: 'Global Unity in Combat Sports', description: 'Uniting diverse martial traditions under standardized sportsmanship and mutual athletic development.' }
                 ]
             },
-            techniques: {
-                title: 'Combat Techniques & Rules',
-                badge: 'Technical Standards',
-                items: [
-                    { id: 'tec-1', title: 'Striking Mechanics & Scoring', description: 'Biomechanical striking criteria, approved target areas, and ring referee point evaluation rules.' },
-                    { id: 'tec-2', title: 'Grappling & Control Protocols', description: 'Approved joint control, ground defense strategies, and safety submission standards.' }
-                ]
-            },
             unions: {
                 title: 'Combat Unions (WCMASUA)',
                 badge: 'Affiliated Network',
@@ -599,8 +588,80 @@
         // Default Verification Database
         const defaultVerificationDB = {
             id: [
-                { id: 'WCM-1001', name: 'Alexander Wright', role: 'Senior Instructor', country: 'United Kingdom' },
-                { id: 'WCM-1002', name: 'Elena Rostova', role: 'Official Representative', country: 'Latvia' }
+                "WCM#Et-2824", "WCM#Et-1409", "WCM#Et-5506", "WCM#Et-5012", "WCM#Et-4657", "WCM#Et-3286", "WCM#Et-2679", "WCM#Et-9935", "WCM#Et-2424", "WCM#Et-7912",
+                "WCM#Et-1520", "WCM#Et-1488", "WCM#Et-2535", "WCM#Et-4582", "WCM#Et-4811", "WCM#Et-9279", "WCM#Et-1434", "WCM#Et-4257", "WCM#Et-9928", "WCM#Et-7873",
+                "WCM#Et-4611", "WCM#Et-8359", "WCM#Et-5557", "WCM#Et-1106", "WCM#Et-3615", "WCM#Et-7924", "WCM#Et-6574", "WCM#Et-5552", "WCM#Et-3547", "WCM#Et-4527",
+                "WCM#Et-6514", "WCM#Et-2674", "WCM#Et-2519", "WCM#Et-7224", "WCM#Et-2584", "WCM#Et-6881", "WCM#Et-6635", "WCM#Et-5333", "WCM#Et-1711", "WCM#Et-8527",
+                "WCM#Et-9785", "WCM#Et-3045", "WCM#Et-7201", "WCM#Et-2291", "WCM#Et-5803", "WCM#Et-6925", "WCM#Et-4150", "WCM#Et-2139", "WCM#Et-1750", "WCM#Et-4733",
+                "WCM#Et-5741", "WCM#Et-2307", "WCM#Et-4814", "WCM#Et-2654", "WCM#Et-7227", "WCM#Et-5554", "WCM#Et-8428", "WCM#Et-6977", "WCM#Et-3664", "WCM#Et-7065",
+                "WCM#Et-6820", "WCM#Et-4432", "WCM#Et-5374", "WCM#Et-2169", "WCM#Et-3803", "WCM#Et-9751", "WCM#Et-5010", "WCM#Et-3677", "WCM#Et-8573", "WCM#Et-7216",
+                "WCM#Et-5422", "WCM#Et-4598", "WCM#Et-6313", "WCM#Et-1916", "WCM#Et-4752", "WCM#Et-1525", "WCM#Et-6168", "WCM#Et-7572", "WCM#Et-5386", "WCM#Et-2084",
+                "WCM#Et-4456", "WCM#Et-6155", "WCM#Et-4483", "WCM#Et-9179", "WCM#Et-7482", "WCM#Et-8517", "WCM#Et-3340", "WCM#Et-5339", "WCM#Et-3287", "WCM#Et-5040",
+                "WCM#Et-9830", "WCM#Et-5304", "WCM#Et-8019", "WCM#Et-7543", "WCM#Et-6930", "WCM#Et-4593", "WCM#Et-3266", "WCM#Et-9348", "WCM#Et-9085", "WCM#Et-2489",
+                "WCM#Et-1771", "WCM#Et-2796", "WCM#Et-3504", "WCM#Et-3621", "WCM#Et-7916", "WCM#Et-2040", "WCM#Et-7304", "WCM#Et-7252", "WCM#Et-8668", "WCM#Et-9669",
+                "WCM#Et-5119", "WCM#Et-1188", "WCM#Et-2876", "WCM#Et-9797", "WCM#Et-5371", "WCM#Et-6573", "WCM#Et-2827", "WCM#Et-5808", "WCM#Et-8123", "WCM#Et-3591",
+                "WCM#Et-8433", "WCM#Et-1053", "WCM#Et-5315", "WCM#Et-9201", "WCM#Et-3927", "WCM#Et-9317", "WCM#Et-2743", "WCM#Et-5889", "WCM#Et-9874", "WCM#Et-4258",
+                "WCM#Et-9897", "WCM#Et-7126", "WCM#Et-3646", "WCM#Et-9837", "WCM#Et-9689", "WCM#Et-1009", "WCM#Et-6310", "WCM#Et-9005", "WCM#Et-1319", "WCM#Et-2832",
+                "WCM#Et-6947", "WCM#Et-6038", "WCM#Et-4923", "WCM#Et-1949", "WCM#Et-4946", "WCM#Et-2290", "WCM#Et-2403", "WCM#Et-8962", "WCM#Et-2133", "WCM#Et-9727",
+                "WCM#Et-3060", "WCM#Et-3103", "WCM#Et-8787", "WCM#Et-3705", "WCM#Et-5342", "WCM#Et-9645", "WCM#Et-7932", "WCM#Et-4470", "WCM#Et-9835", "WCM#Et-4295",
+                "WCM#Et-6107", "WCM#Et-7537", "WCM#Et-7118", "WCM#Et-8177", "WCM#Et-9479", "WCM#Et-8397", "WCM#Et-2982", "WCM#Et-5061", "WCM#Et-4681", "WCM#Et-2049",
+                "WCM#Et-6539", "WCM#Et-1344", "WCM#Et-4770", "WCM#Et-4608", "WCM#Et-1117", "WCM#Et-2163", "WCM#Et-1964", "WCM#Et-4750", "WCM#Et-2104", "WCM#Et-1514",
+                "WCM#Et-6413", "WCM#Et-2160", "WCM#Et-9423", "WCM#Et-4899", "WCM#Et-5562", "WCM#Et-8953", "WCM#Et-4510", "WCM#Et-3167", "WCM#Et-8744", "WCM#Et-4981",
+                "WCM#Et-8749", "WCM#Et-7669", "WCM#Et-4119", "WCM#Et-2545", "WCM#Et-2588", "WCM#Et-8062", "WCM#Et-6804", "WCM#Et-7939", "WCM#Et-7735", "WCM#Et-8651",
+                "WCM#Et-1887", "WCM#Et-2612", "WCM#Et-1993", "WCM#Et-7596", "WCM#Et-6559", "WCM#Et-2790", "WCM#Et-5073", "WCM#Et-4139", "WCM#Et-4116", "WCM#Et-9786",
+                "WCM#Et-8350", "WCM#Et-3296", "WCM#Et-9990", "WCM#Et-4006", "WCM#Et-5563", "WCM#Et-8579", "WCM#Et-5092", "WCM#Et-2235", "WCM#Et-8260", "WCM#Et-2604",
+                "WCM#Et-1828", "WCM#Et-1241", "WCM#Et-2528", "WCM#Et-4872", "WCM#Et-3724", "WCM#Et-7658", "WCM#Et-8956", "WCM#Et-8886", "WCM#Et-4502", "WCM#Et-7570",
+                "WCM#Et-1960", "WCM#Et-3697", "WCM#Et-7209", "WCM#Et-1035", "WCM#Et-7396", "WCM#Et-5345", "WCM#Et-8454", "WCM#Et-5673", "WCM#Et-7930", "WCM#Et-8973",
+                "WCM#Et-3536", "WCM#Et-4111", "WCM#Et-5861", "WCM#Et-4566", "WCM#Et-1958", "WCM#Et-1998", "WCM#Et-6138", "WCM#Et-1936", "WCM#Et-1821", "WCM#Et-8811",
+                "WCM#Et-9238", "WCM#Et-9701", "WCM#Et-3579", "WCM#Et-1931", "WCM#Et-9320", "WCM#Et-2312", "WCM#Et-4044", "WCM#Et-2122", "WCM#Et-2113", "WCM#Et-4853",
+                "WCM#Et-7615", "WCM#Et-2964", "WCM#Et-5033", "WCM#Et-1651", "WCM#Et-2343", "WCM#Et-7868", "WCM#Et-9565", "WCM#Et-6183", "WCM#Et-5272", "WCM#Et-4346",
+                "WCM#Et-6147", "WCM#Et-4910", "WCM#Et-5351", "WCM#Et-7484", "WCM#Et-3144", "WCM#Et-5915", "WCM#Et-8491", "WCM#Et-6180", "WCM#Et-2188", "WCM#Et-1152",
+                "WCM#Et-8508", "WCM#Et-2638", "WCM#Et-2200", "WCM#Et-4492", "WCM#Et-9288", "WCM#Et-9764", "WCM#Et-3170", "WCM#Et-6718", "WCM#Et-2127", "WCM#Et-5002",
+                "WCM#Et-7054", "WCM#Et-5669", "WCM#Et-3584", "WCM#Et-8179", "WCM#Et-5956", "WCM#Et-9666", "WCM#Et-1128", "WCM#Et-5905", "WCM#Et-2697", "WCM#Et-3200",
+                "WCM#Et-9962", "WCM#Et-2891", "WCM#Et-2753", "WCM#Et-3546", "WCM#Et-5462", "WCM#Et-5616", "WCM#Et-4450", "WCM#Et-6617", "WCM#Et-4335", "WCM#Et-5325",
+                "WCM#Et-9280", "WCM#Et-9004", "WCM#Et-5114", "WCM#Et-1832", "WCM#Et-2512", "WCM#Et-9802", "WCM#Et-5533", "WCM#Et-1722", "WCM#Et-1058", "WCM#Et-6464",
+                "WCM#Et-3143", "WCM#Et-5291", "WCM#Et-3647", "WCM#Et-8239", "WCM#Et-8007", "WCM#Et-1158", "WCM#Et-9860", "WCM#Et-2232", "WCM#Et-3442", "WCM#Et-1590",
+                "WCM#Et-7049", "WCM#Et-3426", "WCM#Et-8041", "WCM#Et-3088", "WCM#Et-1685", "WCM#Et-6050", "WCM#Et-6974", "WCM#Et-1653", "WCM#Et-6862", "WCM#Et-4441",
+                "WCM#Et-5088", "WCM#Et-2684", "WCM#Et-6794", "WCM#Et-9774", "WCM#Et-3532", "WCM#Et-4878", "WCM#Et-3662", "WCM#Et-3900", "WCM#Et-7755", "WCM#Et-1406",
+                "WCM#Et-3938", "WCM#Et-6442", "WCM#Et-7745", "WCM#Et-5065", "WCM#Et-9885", "WCM#Et-3608", "WCM#Et-2771", "WCM#Et-7267", "WCM#Et-1634", "WCM#Et-8711",
+                "WCM#Et-4644", "WCM#Et-4269", "WCM#Et-8541", "WCM#Et-6728", "WCM#Et-6000", "WCM#Et-4728", "WCM#Et-4652", "WCM#Et-1387", "WCM#Et-4164", "WCM#Et-7528",
+                "WCM#Et-6378", "WCM#Et-5564", "WCM#Et-2137", "WCM#Et-5573", "WCM#Et-6753", "WCM#Et-9346", "WCM#Et-7548", "WCM#Et-6425", "WCM#Et-1452", "WCM#Et-2889",
+                "WCM#Et-5279", "WCM#Et-3925", "WCM#Et-5349", "WCM#Et-1626", "WCM#Et-2776", "WCM#Et-8119", "WCM#Et-6663", "WCM#Et-6139", "WCM#Et-8149", "WCM#Et-9379",
+                "WCM#Et-2894", "WCM#Et-7311", "WCM#Et-4114", "WCM#Et-5173", "WCM#Et-1727", "WCM#Et-8144", "WCM#Et-1027", "WCM#Et-9518", "WCM#Et-4228", "WCM#Et-6967",
+                "WCM#Et-8066", "WCM#Et-2146", "WCM#Et-6409", "WCM#Et-6143", "WCM#Et-3041", "WCM#Et-5920", "WCM#Et-9308", "WCM#Et-6067", "WCM#Et-7691", "WCM#Et-6344",
+                "WCM#Et-7592", "WCM#Et-5844", "WCM#Et-3085", "WCM#Et-4143", "WCM#Et-7888", "WCM#Et-7211", "WCM#Et-3851", "WCM#Et-5930", "WCM#Et-7653", "WCM#Et-1006",
+                "WCM#Et-5978", "WCM#Et-5700", "WCM#Et-4443", "WCM#Et-8043", "WCM#Et-6279", "WCM#Et-8618", "WCM#Et-8238", "WCM#Et-8244", "WCM#Et-4501", "WCM#Et-9375",
+                "WCM#Et-8752", "WCM#Et-3780", "WCM#Et-2389", "WCM#Et-5649", "WCM#Et-9445", "WCM#Et-6491", "WCM#Et-2530", "WCM#Et-4848", "WCM#Et-6085", "WCM#Et-4680",
+                "WCM#Et-4262", "WCM#Et-3414", "WCM#Et-1400", "WCM#Et-1757", "WCM#Et-5011", "WCM#Et-8784", "WCM#Et-2193", "WCM#Et-8461", "WCM#Et-7790", "WCM#Et-4185",
+                "WCM#Et-7291", "WCM#Et-9099", "WCM#Et-7547", "WCM#Et-4997", "WCM#Et-3417", "WCM#Et-1090", "WCM#Et-2746", "WCM#Et-7965", "WCM#Et-4585", "WCM#Et-3881",
+                "WCM#Et-9486", "WCM#Et-8611", "WCM#Et-1822", "WCM#Et-5082", "WCM#Et-2988", "WCM#Et-8478", "WCM#Et-3184", "WCM#Et-8612", "WCM#Et-6198", "WCM#Et-8251",
+                "WCM#Et-9270", "WCM#Et-7991", "WCM#Et-8305", "WCM#Et-3607", "WCM#Et-8777", "WCM#Et-8373", "WCM#Et-5246", "WCM#Et-5050", "WCM#Et-5543", "WCM#Et-8939",
+                "WCM#Et-4919", "WCM#Et-5499", "WCM#Et-8206", "WCM#Et-2269", "WCM#Et-5681", "WCM#Et-4841", "WCM#Et-5451", "WCM#Et-6502", "WCM#Et-6238", "WCM#Et-2320",
+                "WCM#Et-3267", "WCM#Et-3471", "WCM#Et-4788", "WCM#Et-7275", "WCM#Et-3503", "WCM#Et-4505", "WCM#Et-2052", "WCM#Et-7797", "WCM#Et-7678", "WCM#Et-6421",
+                "WCM#Et-8633", "WCM#Et-7812", "WCM#Et-2020", "WCM#Et-4388", "WCM#Et-7883", "WCM#Et-7381", "WCM#Et-1320", "WCM#Et-7232", "WCM#Et-8814", "WCM#Et-1096",
+                "WCM#Et-6763", "WCM#Et-5892", "WCM#Et-7389", "WCM#Et-7865", "WCM#Et-4613", "WCM#Et-8999", "WCM#Et-4595", "WCM#Et-5471", "WCM#Et-8140", "WCM#Et-9773",
+                "WCM#Et-1475", "WCM#Et-7371", "WCM#Et-6507", "WCM#Et-7624", "WCM#Et-3704", "WCM#Et-8657", "WCM#Et-3091", "WCM#Et-1441", "WCM#Et-7455", "WCM#Et-1444",
+                "WCM#Et-2375", "WCM#Et-8022", "WCM#Et-3223", "WCM#Et-8564", "WCM#Et-3977", "WCM#Et-1823", "WCM#Et-5262", "WCM#Et-9584", "WCM#Et-6363", "WCM#Et-4467",
+                "WCM#Et-8449", "WCM#Et-6355", "WCM#Et-6529", "WCM#Et-9462", "WCM#Et-5558", "WCM#Et-7906", "WCM#Et-5133", "WCM#Et-2341", "WCM#Et-8705", "WCM#Et-1317",
+                "WCM#Et-1853", "WCM#Et-6733", "WCM#Et-4673", "WCM#Et-2124", "WCM#Et-1659", "WCM#Et-1508", "WCM#Et-5051", "WCM#Et-4266", "WCM#Et-1333", "WCM#Et-3496",
+                "WCM#Et-4908", "WCM#Et-3068", "WCM#Et-8758", "WCM#Et-2874", "WCM#Et-4571", "WCM#Et-8619", "WCM#Et-5198", "WCM#Et-7043", "WCM#Et-3749", "WCM#Et-9887",
+                "WCM#Et-3683", "WCM#Et-6096", "WCM#Et-9643", "WCM#Et-1420", "WCM#Et-6111", "WCM#Et-7149", "WCM#Et-7498", "WCM#Et-4249", "WCM#Et-2245", "WCM#Et-4978",
+                "WCM#Et-2669", "WCM#Et-5941", "WCM#Et-2983", "WCM#Et-1672", "WCM#Et-6688", "WCM#Et-8018", "WCM#Et-7071", "WCM#Et-2129", "WCM#Et-9289", "WCM#Et-6590",
+                "WCM#Et-1207", "WCM#Et-7882", "WCM#Et-9031", "WCM#Et-2729", "WCM#Et-8102", "WCM#Et-6934", "WCM#Et-8532", "WCM#Et-3506", "WCM#Et-8135", "WCM#Et-3885",
+                "WCM#Et-5425", "WCM#Et-8921", "WCM#Et-8616", "WCM#Et-8136", "WCM#Et-5397", "WCM#Et-6280", "WCM#Et-5022", "WCM#Et-2419", "WCM#Et-5569", "WCM#Et-8385",
+                "WCM#Et-4995", "WCM#Et-8613", "WCM#Et-9767", "WCM#Et-6511", "WCM#Et-1470", "WCM#Et-9098", "WCM#Et-6325", "WCM#Et-3979", "WCM#Et-8988", "WCM#Et-4475",
+                "WCM#Et-6813", "WCM#Et-5232", "WCM#Et-6576", "WCM#Et-5581", "WCM#Et-5526", "WCM#Et-1166", "WCM#Et-4130", "WCM#Et-2402", "WCM#Et-4954", "WCM#Et-9656",
+                "WCM#Et-9688", "WCM#Et-4937", "WCM#Et-8800", "WCM#Et-9041", "WCM#Et-8342", "WCM#Et-1282", "WCM#Et-2524", "WCM#Et-5820", "WCM#Et-4630", "WCM#Et-7625",
+                "WCM#Et-4986", "WCM#Et-6016", "WCM#Et-7046", "WCM#Et-8753", "WCM#Et-6632", "WCM#Et-7971", "WCM#Et-6419", "WCM#Et-6764", "WCM#Et-8434", "WCM#Et-5438",
+                "WCM#Et-6023", "WCM#Et-5118", "WCM#Et-4777", "WCM#Et-2976", "WCM#Et-4155", "WCM#Et-6169", "WCM#Et-2958", "WCM#Et-4033", "WCM#Et-4138", "WCM#Et-4545",
+                "WCM#Et-8933", "WCM#Et-5530", "WCM#Et-5636", "WCM#Et-2647", "WCM#Et-4180", "WCM#Et-5853", "WCM#Et-4727", "WCM#Et-6912", "WCM#Et-3939", "WCM#Et-5952",
+                "WCM#Et-1231", "WCM#Et-3073", "WCM#Et-5494", "WCM#Et-1745", "WCM#Et-1893", "WCM#Et-5786", "WCM#Et-9438", "WCM#Et-9042", "WCM#Et-2680", "WCM#Et-1200",
+                "WCM#Et-5658", "WCM#Et-8690", "WCM#Et-8843", "WCM#Et-8216", "WCM#Et-6582", "WCM#Et-4020", "WCM#Et-1841", "WCM#Et-5136", "WCM#Et-8827", "WCM#Et-2869",
+                "WCM#Et-2070", "WCM#Et-7565", "WCM#Et-9056", "WCM#Et-2213", "WCM#Et-1878", "WCM#Et-3485", "WCM#Et-3444", "WCM#Et-9579", "WCM#Et-2395", "WCM#Et-5066",
+                "WCM#Et-2940", "WCM#Et-7818", "WCM#Et-4697", "WCM#Et-9492", "WCM#Et-8381", "WCM#Et-8253", "WCM#Et-5871", "WCM#Et-8025", "WCM#Et-6003", "WCM#Et-1986",
+                "WCM#Et-2625", "WCM#Et-4404", "WCM#Et-4457", "WCM#Et-5335", "WCM#Et-2330", "WCM#Et-3573", "WCM#Et-4929", "WCM#Et-3847", "WCM#Et-2229", "WCM#Et-3564",
+                "WCM#Et-1043", "WCM#Et-7693", "WCM#Et-9295", "WCM#Et-8699", "WCM#Et-5771", "WCM#Et-1534", "WCM#Et-4792", "WCM#Et-5720", "WCM#Et-5632", "WCM#Et-8438",
+                "WCM#Et-2166", "WCM#Et-4824"
             ],
             cert: [
                 { id: 'DAN-8802', name: 'Marcus Vance', degree: '6th Dan Black Belt', system: 'Combat Kickboxing' },
@@ -758,7 +819,7 @@
         function switchAdminTab(secKey) {
             store.activeAdminTab = secKey;
 
-            const keys = ['general', 'orgMembers', 'countryReps', 'masters', 'organization', 'philosophy', 'techniques', 'unions', 'verification'];
+            const keys = ['general', 'orgMembers', 'countryReps', 'masters', 'organization', 'philosophy', 'unions', 'verification'];
             keys.forEach(k => {
                 const btn = document.getElementById(`admTab-${k}`);
                 if (btn) {
