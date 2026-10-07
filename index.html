@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCMASUA - World Combat Martial Art Sport Union Association</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        subtle: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #334155;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-700 font-sans antialiased min-h-screen flex flex-col custom-scrollbar smooth-scroll">
+
+    <!-- Notification Toast Container -->
+    <div id="toastContainer" class="fixed top-6 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- ========================================== -->
+    <!-- PUBLIC HEADER (Visible only on Public Web) -->
+    <!-- ========================================== -->
+    <header id="publicHeader" class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Title Text Only (No Icons/Images) -->
+                <div class="flex items-center cursor-pointer" onclick="switchPublicTab('home')">
+                    <div>
+                        <span class="block text-xl font-bold tracking-wide text-slate-800 uppercase leading-none">WCMASUA</span>
+                        <span class="block text-xs font-normal text-slate-500 tracking-wider uppercase mt-1">World Combat Martial Art Sport Union</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-2 xl:space-x-3 text-base font-medium">
+                    <button onclick="switchPublicTab('home')" class="nav-btn px-2.5 py-2 text-slate-800 hover:text-subtle-600 font-semibold transition-colors">Home</button>
+                    <button onclick="switchPublicTab('general')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">General</button>
+                    <button onclick="switchPublicTab('orgMembers')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Org Members</button>
+                    <button onclick="switchPublicTab('countryReps')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Country Reps</button>
+                    <button onclick="switchPublicTab('masters')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Masters</button>
+                    <button onclick="switchPublicTab('organization')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Organization</button>
+                    <button onclick="switchPublicTab('services')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Services</button>
+                    <button onclick="switchPublicTab('philosophy')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Philosophy</button>
+                    <button onclick="switchPublicTab('techniques')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Techniques</button>
+                    <button onclick="switchPublicTab('unions')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Unions</button>
+                    <button onclick="switchPublicTab('verification')" class="nav-btn px-2.5 py-2 text-slate-800 hover:text-subtle-600 font-semibold transition-colors">Advanced Rank</button>
+                    <button onclick="switchPublicTab('payment')" class="nav-btn px-2.5 py-2 text-slate-600 hover:text-subtle-600 transition-colors">Contact</button>
+                </nav>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="lg:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="p-2 rounded-md text-slate-600 hover:text-slate-900 focus:outline-none border border-slate-200 text-sm font-medium">
+                        Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1 text-base font-medium">
+            <button onclick="switchPublicTab('home')" class="block w-full text-left px-3 py-2 text-slate-800 font-semibold hover:bg-slate-50 rounded">Home</button>
+            <button onclick="switchPublicTab('general')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">General</button>
+            <button onclick="switchPublicTab('orgMembers')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Organization Members</button>
+            <button onclick="switchPublicTab('countryReps')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Country Representatives</button>
+            <button onclick="switchPublicTab('masters')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Masters (Instructors)</button>
+            <button onclick="switchPublicTab('organization')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Organization</button>
+            <button onclick="switchPublicTab('services')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Services</button>
+            <button onclick="switchPublicTab('philosophy')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Philosophy</button>
+            <button onclick="switchPublicTab('techniques')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Techniques</button>
+            <button onclick="switchPublicTab('unions')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Unions</button>
+            <button onclick="switchPublicTab('verification')" class="block w-full text-left px-3 py-2 text-slate-800 font-semibold hover:bg-slate-50 rounded">Advanced Rank Verification</button>
+            <button onclick="switchPublicTab('payment')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-slate-50 rounded">Contact & Payment</button>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- PUBLIC WEB PORTAL VIEW                      -->
+    <!-- ========================================== -->
+    <main id="publicPortalView" class="flex-grow bg-white">
+
+        <!-- 1. HOME SECTION -->
+        <section id="pub-home" class="public-tab max-w-7xl mx-auto px-4 py-12">
+            <div class="border border-slate-200 rounded-xl p-8 sm:p-12 bg-slate-50/50 mb-10 text-center relative">
+                <h1 class="text-2xl sm:text-4xl font-semibold text-slate-800 tracking-tight mb-4 leading-relaxed">
+                    WORLD COMBAT MARTIAL ART <br>
+                    <span class="text-slate-600 font-normal">SPORT UNION ASSOCIATION</span>
+                </h1>
+                <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+                    Unifying international combat martial arts unions, accredited grandmasters, instructors, and sports officials worldwide. Standardizing certifications, referee licenses, and organizational affiliations.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="switchPublicTab('orgMembers')" class="px-5 py-2.5 rounded-lg bg-slate-700 text-white font-normal text-xs uppercase tracking-wider hover:bg-slate-800 transition-all">
+                        View Organization Members
+                    </button>
+                    <button onclick="switchPublicTab('verification')" class="px-5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-normal text-xs uppercase tracking-wider hover:bg-slate-50 transition-all">
+                        Verify Rank & Credentials
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-xl bg-white border border-slate-200">
+                    <h3 class="text-base font-semibold text-slate-800 mb-2">Global Governance</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">International accreditation for combat martial sports unions, national representatives, and athletic bodies.</p>
+                    <button onclick="switchPublicTab('general')" class="text-slate-600 text-xs font-medium hover:underline inline-flex items-center">
+                        Read General Overview &rarr;
+                    </button>
+                </div>
+                <div class="p-6 rounded-xl bg-white border border-slate-200">
+                    <h3 class="text-base font-semibold text-slate-800 mb-2">Official Verification</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Search database for Member IDs, Dan Certificates, and licensed Judge/Referee credentials.</p>
+                    <button onclick="switchPublicTab('verification')" class="text-slate-600 text-xs font-medium hover:underline inline-flex items-center">
+                        Open Verification Register &rarr;
+                    </button>
+                </div>
+                <div class="p-6 rounded-xl bg-white border border-slate-200">
+                    <h3 class="text-base font-semibold text-slate-800 mb-2">Member Affiliations</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Coordinating technical standards across member organizations and country representatives.</p>
+                    <button onclick="switchPublicTab('countryReps')" class="text-slate-600 text-xs font-medium hover:underline inline-flex items-center">
+                        View Country Reps &rarr;
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DYNAMIC PUBLIC SECTIONS (General, Org Members, Country Reps, Masters, Org, Philosophy, Techniques, Unions) -->
+        <section id="pub-dynamic" class="public-tab hidden max-w-7xl mx-auto px-4 py-10">
+            <div class="border-b border-slate-200 pb-4 mb-6">
+                <span id="pubDynBadge" class="text-xs font-normal text-slate-500 uppercase tracking-wider">Official Section</span>
+                <h2 id="pubDynTitle" class="text-2xl font-semibold text-slate-800 mt-1">Section Title</h2>
+            </div>
+            <div id="pubDynContent" class="space-y-4"></div>
+        </section>
+
+        <!-- 3. SERVICES SECTION -->
+        <section id="pub-services" class="public-tab hidden max-w-5xl mx-auto px-4 py-10">
+            <div class="border-b border-slate-200 pb-4 mb-6">
+                <span class="text-xs font-normal text-slate-500 uppercase tracking-wider">Administrative Services</span>
+                <h2 class="text-2xl font-semibold text-slate-800 mt-1">Official Certificates & Credentials</h2>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8 text-slate-700">
+                <div class="space-y-1">
+                    <h3 class="text-sm font-semibold text-slate-800">Credential Access Guidance</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        WCMASUA does not accept direct individual request forms through this portal. All official <strong>International Certificates</strong>, <strong>Student Rank Certificates</strong>, <strong>Uniform Patches</strong>, and <strong>Digital E-IDs</strong> must be accessed and formally requested strictly through your designated <strong>Country Representatives</strong> or <strong>Organizational Representatives</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-5 rounded-xl border border-slate-200 bg-white">
+                    <h4 class="text-sm font-semibold text-slate-800 mb-1">International Dan Certificates</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Official accreditation certificates issued to qualified instructors and senior rank holders via member representatives.</p>
+                </div>
+                <div class="p-5 rounded-xl border border-slate-200 bg-white">
+                    <h4 class="text-sm font-semibold text-slate-800 mb-1">Student Rank Certificates</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Standardized rank certificates and student progression records validated by affiliated bodies.</p>
+                </div>
+                <div class="p-5 rounded-xl border border-slate-200 bg-white">
+                    <h4 class="text-sm font-semibold text-slate-800 mb-1">Patches & Digital E-IDs</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Authenticated digital identification badges and official embroidered emblem patches.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ADVANCED RANK VERIFICATION SECTION -->
+        <section id="pub-verification" class="public-tab hidden max-w-4xl mx-auto px-4 py-10">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full uppercase tracking-wider">Official Search</span>
+                <h2 class="text-2xl font-semibold text-slate-800 mt-2">Advanced Rank & Register Verification</h2>
+                <p class="text-slate-500 text-xs mt-1">Verify WCMASUA IDs, Dan Certificates, or Judge/Referee credentials by selecting a registry category below.</p>
+            </div>
+
+            <div class="flex border-b border-slate-200 mb-6 justify-center space-x-4 text-xs font-medium">
+                <button onclick="switchVerifyTab('id')" id="vtab-id" class="py-2 px-3 border-b-2 border-slate-700 text-slate-800 focus:outline-none">
+                    ID Verification
+                </button>
+                <button onclick="switchVerifyTab('cert')" id="vtab-cert" class="py-2 px-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none">
+                    Certificate Verification
+                </button>
+                <button onclick="switchVerifyTab('judge')" id="vtab-judge" class="py-2 px-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none">
+                    Judges & Referees Verification
+                </button>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 sm:p-8">
+                <form onsubmit="handleVerificationSearch(event)" class="space-y-4">
+                    <div>
+                        <label id="vSearchLabel" class="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Member Identification Code</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="vSearchInput" placeholder="Enter code (e.g., WCM-1001)" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-slate-500 outline-none text-slate-800">
+                            <button type="submit" class="px-5 py-2 bg-slate-700 hover:bg-slate-800 text-white font-normal rounded-lg transition text-xs whitespace-nowrap">
+                                Verify Code
+                            </button>
+                        </div>
+                        <p id="vSearchHint" class="text-[11px] text-slate-400 mt-1">Sample ID: Search "WCM-1001"</p>
+                    </div>
+                </form>
+
+                <div id="vResultContainer" class="hidden mt-6 pt-6 border-t border-slate-200"></div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT & PAYMENT SECTION -->
+        <section id="pub-payment" class="public-tab hidden max-w-6xl mx-auto px-4 py-10">
+            <div class="border-b border-slate-200 pb-4 mb-8">
+                <span class="text-xs font-normal text-slate-500 uppercase tracking-wider">Official Inquiries & Process</span>
+                <h2 class="text-2xl font-semibold text-slate-800 mt-1">Contact Us & Payment Information</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <!-- Left: Send Email Form -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 sm:p-8">
+                    <h3 class="text-xl font-bold tracking-tight text-slate-800 mb-6 uppercase">Send An Email</h3>
+                    <form onsubmit="handleSendEmail(event)" class="space-y-5 text-sm">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Your name</label>
+                            <input type="text" id="contactName" placeholder="Your name" required class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:ring-1 focus:ring-slate-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Requested Service</label>
+                            <select id="contactService" class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:ring-1 focus:ring-slate-500 outline-none">
+                                <option value="Membership">Membership</option>
+                                <option value="Certificate">Certificate</option>
+                                <option value="Patches">Patches</option>
+                                <option value="Rank Verification">Rank Verification</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Your message</label>
+                            <textarea id="contactMessage" rows="5" placeholder="Your message" required class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:ring-1 focus:ring-slate-500 outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-medium text-xs uppercase tracking-wider rounded-lg transition-all shadow-sm">
+                            Send Email
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Payment Process Info -->
+                <div class="bg-white border-2 border-slate-300 rounded-xl p-6 sm:p-8">
+                    <span class="text-xs font-semibold tracking-widest text-slate-500 uppercase">Payment</span>
+                    <h3 class="text-2xl font-bold tracking-tight text-slate-800 mt-1 mb-6 uppercase">How To Pay</h3>
+                    <ol class="space-y-4 text-sm text-slate-700 leading-relaxed font-normal">
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold text-slate-900">1.</span>
+                            <span>Email us with the service you need (membership, certificate, patches, rank).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold text-slate-900">2.</span>
+                            <span>We reply with the fee and payment details (bank transfer or online payment).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold text-slate-900">3.</span>
+                            <span>Send your payment receipt by email to <strong class="text-slate-900 underline">info@wcmasua.org</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold text-slate-900">4.</span>
+                            <span>Your certificate, E-ID or membership is processed and delivered.</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ADMIN LOGIN MODAL OVERLAY                  -->
+    <!-- ========================================== -->
+    <div id="adminLoginOverlay" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full rounded-2xl border border-slate-200 shadow-2xl p-8 relative">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Restricted Access</span>
+                <h2 class="text-2xl font-bold text-slate-800 mt-1">Admin Portal Authentication</h2>
+                <p class="text-slate-500 text-xs mt-1">Enter administrative credentials to manage WCMASUA records.</p>
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div id="loginErrorMsg" class="hidden bg-slate-100 border border-slate-300 text-slate-700 text-xs rounded-lg p-3">
+                    Invalid username or password. Please try again.
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Username</label>
+                    <input type="text" id="adminUsername" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 text-sm focus:ring-1 focus:ring-slate-500 outline-none" placeholder="Enter admin username">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Password</label>
+                    <input type="password" id="adminPassword" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 text-sm focus:ring-1 focus:ring-slate-500 outline-none" placeholder="Enter password">
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-all shadow-sm">
+                    Authenticate Session
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ADMIN CONTROL PORTAL VIEW                  -->
+    <!-- ========================================== -->
+    <main id="adminPortalView" class="flex-grow bg-white hidden max-w-7xl mx-auto px-4 py-8">
+        <div class="border-b border-slate-200 pb-6 mb-8">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">System Administration</span>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-800">Admin Control Portal</h1>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="resetAllData()" class="px-4 py-2 border border-slate-300 text-slate-600 hover:bg-slate-50 text-sm font-medium rounded-lg transition">
+                        Reset Defaults
+                    </button>
+                    <button onclick="handleAdminLogout()" class="px-4 py-2 bg-slate-800 text-white hover:bg-slate-900 text-sm font-medium rounded-lg transition">
+                        Log Out
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Nav Tabs with Larger Typography -->
+            <div class="flex flex-wrap gap-2 text-sm font-medium pt-2">
+                <button id="admTab-general" onclick="switchAdminTab('general')" class="px-3.5 py-1.5 bg-white rounded border border-slate-300 text-slate-800 font-semibold shadow-sm border-b-2 border-slate-700">General</button>
+                <button id="admTab-orgMembers" onclick="switchAdminTab('orgMembers')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Org Members</button>
+                <button id="admTab-countryReps" onclick="switchAdminTab('countryReps')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Country Reps</button>
+                <button id="admTab-masters" onclick="switchAdminTab('masters')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Masters</button>
+                <button id="admTab-organization" onclick="switchAdminTab('organization')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Organization</button>
+                <button id="admTab-philosophy" onclick="switchAdminTab('philosophy')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Philosophy</button>
+                <button id="admTab-techniques" onclick="switchAdminTab('techniques')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Techniques</button>
+                <button id="admTab-unions" onclick="switchAdminTab('unions')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Unions</button>
+                <button id="admTab-verification" onclick="switchAdminTab('verification')" class="px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800">Verification Reg</button>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
+            <div>
+                <span id="admSecBadge" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Managing Section</span>
+                <h2 id="admSecTitle" class="text-2xl font-bold text-slate-800 mt-1">Section Title</h2>
+            </div>
+            <div id="adminActionButtons" class="flex items-center space-x-3"></div>
+        </div>
+
+        <div id="admItemsList" class="space-y-4"></div>
+    </main>
+
+    <!-- Modal for Admin CRUD on Regular Sections -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-xl p-6 sm:p-8 rounded-xl border border-slate-200 relative max-h-[90vh] overflow-y-auto shadow-xl">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-base font-semibold">
+                Close
+            </button>
+            <h3 id="modalTitle" class="text-lg font-bold text-slate-800 mb-5 border-b border-slate-200 pb-3">
+                Manage Item
+            </h3>
+            <form id="modalForm" onsubmit="handleFormSubmit(event)" class="space-y-5 text-sm">
+                <input type="hidden" id="formType">
+                <input type="hidden" id="formIndex">
+
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Title / Name</label>
+                    <input type="text" id="formTitle" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm">
+                </div>
+
+                <div id="affiliationGroup" class="hidden">
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Union Member Affiliation</label>
+                    <input type="text" id="formAffiliation" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. European Combat Arts Union">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Description / Details</label>
+                    <textarea id="formDescription" rows="4" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-5 border-t border-slate-200">
+                    <button type="button" onclick="closeModal()" class="px-5 py-2 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 text-sm">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-slate-800 text-white font-medium rounded-lg hover:bg-slate-900 text-sm">Save Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Admin CRUD on Verification Register -->
+    <div id="vRegisterModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-xl p-6 sm:p-8 rounded-xl border border-slate-200 relative max-h-[90vh] overflow-y-auto shadow-xl">
+            <button onclick="closeVRegisterModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-base font-semibold">
+                Close
+            </button>
+            <h3 id="vModalTitle" class="text-lg font-bold text-slate-800 mb-5 border-b border-slate-200 pb-3">
+                Manage Verification Record
+            </h3>
+            <form onsubmit="handleVRegisterSubmit(event)" class="space-y-4 text-sm">
+                <input type="hidden" id="vFormCategory">
+                <input type="hidden" id="vFormIndex">
+
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Registration Code / Number</label>
+                    <input type="text" id="vFormId" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. WCM-1005 / DAN-8820 / REF-400">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Full Name</label>
+                    <input type="text" id="vFormName" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm">
+                </div>
+
+                <div id="vGroup-id" class="hidden space-y-4">
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Assigned Role</label>
+                        <input type="text" id="vFormRole" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. Senior Instructor">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Country / Region</label>
+                        <input type="text" id="vFormCountry" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. United Kingdom">
+                    </div>
+                </div>
+
+                <div id="vGroup-cert" class="hidden space-y-4">
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Dan Degree / Rank</label>
+                        <input type="text" id="vFormDegree" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. 6th Dan Black Belt">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Discipline / System</label>
+                        <input type="text" id="vFormSystem" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. Combat Kickboxing">
+                    </div>
+                </div>
+
+                <div id="vGroup-judge" class="hidden space-y-4">
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Qualification Level</label>
+                        <input type="text" id="vFormLevel" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. Class A International Referee">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">License Status</label>
+                        <input type="text" id="vFormStatus" class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. Licensed 2026">
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-5 border-t border-slate-200">
+                    <button type="button" onclick="closeVRegisterModal()" class="px-5 py-2 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 text-sm">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-slate-800 text-white font-medium rounded-lg hover:bg-slate-900 text-sm">Save Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Adding Custom Sub-Section -->
+    <div id="sectionModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full border border-slate-200 shadow-xl p-6 sm:p-8 relative">
+            <button onclick="closeSectionModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-base font-semibold">Close</button>
+            <h3 class="text-lg font-bold text-slate-800 mb-5 border-b border-slate-200 pb-3">Add Custom Sub-Section</h3>
+            <form onsubmit="handleSaveSubSection(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Heading Title</label>
+                    <input type="text" id="secHeading" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="e.g. Advisory Council">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-2">Content Summary</label>
+                    <textarea id="secBody" rows="4" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg outline-none focus:border-slate-500 text-slate-800 text-sm" placeholder="Enter overview description..."></textarea>
+                </div>
+                <div class="flex justify-end space-x-3 pt-4 border-t border-slate-100">
+                    <button type="button" onclick="closeSectionModal()" class="px-5 py-2 border border-slate-300 rounded-lg text-slate-700 font-medium hover:bg-slate-50 text-sm">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-slate-800 text-white font-medium rounded-lg hover:bg-slate-900 text-sm">Create Sub-Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-1">
+            <p class="text-slate-600">© 2013 World Combat Martial Art Sport Union Association (WCMASUA). All Rights Reserved.</p>
+            <p class="text-[11px] text-slate-400">International Union Association for Combat Martial Arts.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT APP LOGIC & DOMAIN ROUTING       -->
+    <!-- ========================================== -->
+    <script>
+        // Default Content Database
+        const defaultData = {
+            general: {
+                title: 'General Overview',
+                badge: 'Association Mandate',
+                items: [
+                    { id: 'gen-1', title: 'Global Mission', description: 'WCMASUA serves as the unifying international umbrella association for combat martial arts sports, self-defense disciplines, and recognized union bodies worldwide.' },
+                    { id: 'gen-2', title: 'Standardized Governance', description: 'Promoting synchronized referee protocols, athletic competition safety, and internationally accredited rank registrations.' }
+                ]
+            },
+            orgMembers: {
+                title: 'Organization Members',
+                badge: 'Affiliated Organizations',
+                items: [
+                    { id: 'orgm-1', title: 'International Combat Sports Union', description: 'Charter organization overseeing European and Asian regional combat tournaments.' },
+                    { id: 'orgm-2', title: 'Pan-American Martial Federation', description: 'Governing body coordinating striking and grappling championships across North and South America.' }
+                ]
+            },
+            countryReps: {
+                title: 'Country Representatives',
+                badge: 'National Directors',
+                items: [
+                    { id: 'crep-1', title: 'United Kingdom Representative', description: 'Official Country Director: Master David Vance. Directs national certification requests.' },
+                    { id: 'crep-2', title: 'Japan Representative', description: 'Official Country Director: Grandmaster Hiroshi Tanaka. Directs Asia-Pacific union affairs.' }
+                ]
+            },
+            masters: {
+                title: 'Masters & Certified Instructors',
+                badge: 'Technical Leadership',
+                items: [
+                    { id: 'mst-1', title: 'Grandmaster Hiroshi Tanaka', affiliation: 'Asian Combat Union', description: '9th Dan Senior Technical Advisor and Chief Referee Commission Chair.' },
+                    { id: 'mst-2', title: 'Grandmaster Carlos Silva', affiliation: 'Pan-American Martial Federation', description: '8th Dan Director of Scientific Combat Biomechanics.' }
+                ]
+            },
+            organization: {
+                title: 'Organizational Structure',
+                badge: 'Executive Leadership',
+                items: [
+                    { id: 'org-1', title: 'Executive Supreme Council', description: 'Formulates global technical rules, judicial guidelines, and approves country representative charters.' },
+                    { id: 'org-2', title: 'Disciplinary & Ethics Commission', description: 'Maintains rank integrity, standardizes referee licensing, and enforces global ethical compliance.' }
+                ]
+            },
+            philosophy: {
+                title: 'WCMASUA Philosophy',
+                badge: 'Core Principles',
+                items: [
+                    { id: 'phi-1', title: 'Discipline, Honor & Excellence', description: 'Fostering physical martial mastery alongside mental fortitude and unyielding respect across member unions.' },
+                    { id: 'phi-2', title: 'Global Unity in Combat Sports', description: 'Uniting diverse martial traditions under standardized sportsmanship and mutual athletic development.' }
+                ]
+            },
+            techniques: {
+                title: 'Combat Techniques & Rules',
+                badge: 'Technical Standards',
+                items: [
+                    { id: 'tec-1', title: 'Striking Mechanics & Scoring', description: 'Biomechanical striking criteria, approved target areas, and ring referee point evaluation rules.' },
+                    { id: 'tec-2', title: 'Grappling & Control Protocols', description: 'Approved joint control, ground defense strategies, and safety submission standards.' }
+                ]
+            },
+            unions: {
+                title: 'Combat Unions (WCMASUA)',
+                badge: 'Affiliated Network',
+                items: [
+                    { id: 'uni-1', title: 'European Strike & Grappling Union', description: 'Coordinating member associations across 28 European nations.' },
+                    { id: 'uni-2', title: 'Global Tactical Self-Defense Association', description: 'Standardizing civilian and security professional tactical combat instruction.' }
+                ]
+            }
+        };
+
+        // Default Verification Database
+        const defaultVerificationDB = {
+            id: [
+                { id: 'WCM-1001', name: 'Alexander Wright', role: 'Senior Instructor', country: 'United Kingdom' },
+                { id: 'WCM-1002', name: 'Elena Rostova', role: 'Official Representative', country: 'Latvia' }
+            ],
+            cert: [
+                { id: 'DAN-8802', name: 'Marcus Vance', degree: '6th Dan Black Belt', system: 'Combat Kickboxing' },
+                { id: 'DAN-9011', name: 'Sora Takahashi', degree: '7th Dan Black Belt', system: 'Traditional Ju-Jitsu' }
+            ],
+            judge: [
+                { id: 'REF-300', name: 'David Miller', level: 'Class A International Referee', status: 'Licensed 2026' },
+                { id: 'REF-402', name: 'Anna Kowalski', level: 'Senior Ring Judge', status: 'Licensed 2026' }
+            ]
+        };
+
+        // HARDCODED ADMIN CREDENTIALS
+        const ADMIN_CREDENTIALS = {
+            username: 'admin',
+            password: 'wcmasua2026!'
+        };
+
+        // State Store
+        let store = {
+            isAdminDomain: false,
+            activePublicTab: 'home',
+            activeAdminTab: 'general',
+            activeVerifyTab: 'id',
+            data: JSON.parse(localStorage.getItem('wcmasua_data_v5')) || defaultData,
+            vData: JSON.parse(localStorage.getItem('wcmasua_vdb_v5')) || defaultVerificationDB
+        };
+
+        function saveData() {
+            localStorage.setItem('wcmasua_data_v5', JSON.stringify(store.data));
+            localStorage.setItem('wcmasua_vdb_v5', JSON.stringify(store.vData));
+            
+            // Refresh the view immediately whenever data is saved
+            if (typeof render === 'function') render();
+            if (typeof renderAdmin === 'function') renderAdmin();
+        }
+        // --- AUTOMATIC ROUTING & AUTHENTICATION ON LOAD ---
+        window.onload = function() {
+            detectDomainRouting();
+        };
+
+        function detectDomainRouting() {
+            const hostname = window.location.hostname.toLowerCase();
+            const pathname = window.location.pathname.toLowerCase();
+            const search = window.location.search.toLowerCase();
+
+            // Detect admin subdomain/domain, path, or URL query param (e.g., admin.wcmasua.com, /admin, or ?admin=true)
+            if (hostname.startsWith('admin.') || pathname.includes('/admin') || search.includes('admin=true') || search.includes('admin=1')) {
+                store.isAdminDomain = true;
+                initAdminPortalAccess();
+            } else {
+                store.isAdminDomain = false;
+                initPublicPortal();
+            }
+        }
+
+        function initPublicPortal() {
+            document.getElementById('publicHeader').classList.remove('hidden');
+            document.getElementById('publicPortalView').classList.remove('hidden');
+            document.getElementById('adminPortalView').classList.add('hidden');
+            document.getElementById('adminLoginOverlay').classList.add('hidden');
+            switchPublicTab('home');
+        }
+
+        function initAdminPortalAccess() {
+            document.getElementById('publicHeader').classList.add('hidden');
+            document.getElementById('publicPortalView').classList.add('hidden');
+
+            const isAuthenticated = sessionStorage.getItem('wcmasua_admin_auth') === 'true';
+            if (isAuthenticated) {
+                document.getElementById('adminLoginOverlay').classList.add('hidden');
+                document.getElementById('adminPortalView').classList.remove('hidden');
+                renderAdminPortal();
+            } else {
+                document.getElementById('adminLoginOverlay').classList.remove('hidden');
+                document.getElementById('adminPortalView').classList.add('hidden');
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const userVal = document.getElementById('adminUsername').value.trim();
+            const passVal = document.getElementById('adminPassword').value.trim();
+            const errEl = document.getElementById('loginErrorMsg');
+
+            if (userVal === ADMIN_CREDENTIALS.username && passVal === ADMIN_CREDENTIALS.password) {
+                sessionStorage.setItem('wcmasua_admin_auth', 'true');
+                errEl.classList.add('hidden');
+                initAdminPortalAccess();
+                showToast("Admin session authenticated");
+            } else {
+                errEl.classList.remove('hidden');
+            }
+        }
+
+        function handleAdminLogout() {
+            sessionStorage.removeItem('wcmasua_admin_auth');
+            showToast("Logged out of Admin Portal");
+            initAdminPortalAccess();
+        }
+
+        // --- PUBLIC PORTAL NAVIGATION ---
+        function switchPublicTab(tab) {
+            store.activePublicTab = tab;
+            document.querySelectorAll('.public-tab').forEach(el => el.classList.add('hidden'));
+
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+
+            if (tab === 'home') {
+                document.getElementById('pub-home').classList.remove('hidden');
+            } else if (tab === 'services') {
+                document.getElementById('pub-services').classList.remove('hidden');
+            } else if (tab === 'verification') {
+                document.getElementById('pub-verification').classList.remove('hidden');
+            } else if (tab === 'payment') {
+                document.getElementById('pub-payment').classList.remove('hidden');
+            } else if (store.data[tab]) {
+                renderDynamicPublicSection(tab);
+                document.getElementById('pub-dynamic').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderDynamicPublicSection(secKey) {
+            const sec = store.data[secKey];
+            if (!sec) return;
+
+            document.getElementById('pubDynBadge').innerText = sec.badge || 'Official Section';
+            document.getElementById('pubDynTitle').innerText = sec.title;
+
+            const container = document.getElementById('pubDynContent');
+            container.innerHTML = '';
+
+            sec.items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'p-6 rounded-xl border border-slate-200 bg-white';
+
+                let tag = '';
+                if (secKey === 'masters' && item.affiliation) {
+                    tag = `<span class="inline-block px-2.5 py-0.5 bg-slate-100 text-slate-600 font-medium text-xs rounded mb-2 border border-slate-200">Union Member: ${item.affiliation}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        ${tag}
+                        <h3 class="text-base font-semibold text-slate-800 mb-1.5">${item.title}</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">${item.description}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- ADMIN PORTAL LOGIC ---
+        function switchAdminTab(secKey) {
+            store.activeAdminTab = secKey;
+
+            const keys = ['general', 'orgMembers', 'countryReps', 'masters', 'organization', 'philosophy', 'techniques', 'unions', 'verification'];
+            keys.forEach(k => {
+                const btn = document.getElementById(`admTab-${k}`);
+                if (btn) {
+                    if (k === secKey) {
+                        btn.className = "px-3.5 py-1.5 bg-white rounded border border-slate-300 text-slate-800 font-semibold shadow-sm border-b-2 border-slate-700";
+                    } else {
+                        btn.className = "px-3.5 py-1.5 bg-white rounded border border-slate-200 text-slate-600 hover:text-slate-800";
+                    }
+                }
+            });
+
+            renderAdminPortal();
+        }
+
+        function renderAdminPortal() {
+            const secKey = store.activeAdminTab;
+            const actionBtns = document.getElementById('adminActionButtons');
+
+            if (secKey === 'verification') {
+                document.getElementById('admSecBadge').innerText = 'Database Management';
+                document.getElementById('admSecTitle').innerText = 'Verification Register Records';
+
+                actionBtns.innerHTML = `
+                    <button onclick="openVRegisterModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-lg transition">
+                        Add Record
+                    </button>
+                `;
+
+                renderAdminVerificationList();
+                return;
+            }
+
+            const sec = store.data[secKey];
+            if (!sec) return;
+
+            document.getElementById('admSecBadge').innerText = sec.badge || 'Managing Section';
+            document.getElementById('admSecTitle').innerText = sec.title;
+
+            actionBtns.innerHTML = `
+                <button onclick="openAddSectionModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-sm font-medium rounded-lg transition">
+                    Add Custom Sub-Section
+                </button>
+                <button onclick="openModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-lg transition">
+                    Add Entry
+                </button>
+            `;
+
+            const container = document.getElementById('admItemsList');
+            container.innerHTML = '';
+
+            sec.items.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = "p-5 rounded-lg border border-slate-200 bg-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4";
+
+                let metaDetails = '';
+                if (item.affiliation) metaDetails += `<span class="text-xs text-slate-600 font-medium bg-white border border-slate-200 px-2.5 py-1 rounded mr-2">Union: ${item.affiliation}</span>`;
+
+                row.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center flex-wrap gap-1">
+                            ${metaDetails}
+                            <h4 class="font-bold text-slate-800 text-base">${item.title}</h4>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">${item.description}</p>
+                    </div>
+                    <div class="flex items-center space-x-2 shrink-0">
+                        <button onclick="openModal('${secKey}', ${index})" class="px-3.5 py-1.5 bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 rounded-lg text-sm font-medium transition">
+                            Edit
+                        </button>
+                        <button onclick="deleteItem('${secKey}', ${index})" class="px-3.5 py-1.5 bg-white border border-slate-300 hover:bg-slate-100 text-slate-600 rounded-lg text-sm font-medium transition">
+                            Delete
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function renderAdminVerificationList() {
+            const container = document.getElementById('admItemsList');
+            container.innerHTML = `
+                <div class="flex border-b border-slate-200 pb-3 mb-4 space-x-6 text-sm">
+                    <button onclick="switchAdminVCategory('id')" id="vCatBtn-id" class="font-bold pb-1 ${store.activeVerifyTab === 'id' ? 'text-slate-800 border-b-2 border-slate-800' : 'text-slate-500'}">IDs Database</button>
+                    <button onclick="switchAdminVCategory('cert')" id="vCatBtn-cert" class="font-bold pb-1 ${store.activeVerifyTab === 'cert' ? 'text-slate-800 border-b-2 border-slate-800' : 'text-slate-500'}">Certificates Database</button>
+                    <button onclick="switchAdminVCategory('judge')" id="vCatBtn-judge" class="font-bold pb-1 ${store.activeVerifyTab === 'judge' ? 'text-slate-800 border-b-2 border-slate-800' : 'text-slate-500'}">Judges/Referees Database</button>
+                </div>
+                <div id="vCatListContainer" class="space-y-3"></div>
+            `;
+
+            const subContainer = document.getElementById('vCatListContainer');
+            const records = store.vData[store.activeVerifyTab] || [];
+
+            if (records.length === 0) {
+                subContainer.innerHTML = `<p class="text-sm text-slate-400 italic">No records in this register category.</p>`;
+                return;
+            }
+
+            records.forEach((rec, index) => {
+                const row = document.createElement('div');
+                row.className = "p-4 rounded-lg border border-slate-200 bg-slate-50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-sm";
+
+                let details = `<strong class="font-bold text-slate-900">${rec.id}</strong> - ${rec.name}`;
+                if (rec.role) details += ` (${rec.role}, ${rec.country})`;
+                if (rec.degree) details += ` (${rec.degree}, ${rec.system})`;
+                if (rec.level) details += ` (${rec.level}, ${rec.status})`;
+
+                row.innerHTML = `
+                    <div class="text-slate-800 font-normal">${details}</div>
+                    <div class="flex items-center space-x-2 shrink-0">
+                        <button onclick="openVRegisterModal(${index})" class="px-3.5 py-1.5 bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 rounded-lg text-sm font-medium transition">
+                            Edit
+                        </button>
+                        <button onclick="deleteVRecord(${index})" class="px-3.5 py-1.5 bg-white border border-slate-300 hover:bg-slate-100 text-slate-600 rounded-lg text-sm font-medium transition">
+                            Delete
+                        </button>
+                    </div>
+                `;
+                subContainer.appendChild(row);
+            });
+        }
+
+        function switchAdminVCategory(cat) {
+            store.activeVerifyTab = cat;
+            renderAdminPortal();
+        }
+
+        function handleSendEmail(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const service = document.getElementById('contactService').value;
+            const message = document.getElementById('contactMessage').value;
+
+            const mailtoUri = `mailto:info@wcmasua.org?subject=${encodeURIComponent('Service Request: ' + service + ' - ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nService: ' + service + '\n\nMessage:\n' + message)}`;
+            window.location.href = mailtoUri;
+            showToast("Opening email client to send request");
+        }
+
+        // --- MODAL HANDLERS ---
+        function openModal(secKey = store.activeAdminTab, index = null) {
+            document.getElementById('formType').value = secKey;
+            document.getElementById('formIndex').value = index !== null ? index : '';
+
+            const affiliationGroup = document.getElementById('affiliationGroup');
+            if (secKey === 'masters') {
+                affiliationGroup.classList.remove('hidden');
+            } else {
+                affiliationGroup.classList.add('hidden');
+            }
+
+            if (index !== null) {
+                const item = store.data[secKey].items[index];
+                document.getElementById('modalTitle').innerText = 'Edit Section Entry';
+                document.getElementById('formTitle').value = item.title;
+                document.getElementById('formDescription').value = item.description;
+                document.getElementById('formAffiliation').value = item.affiliation || '';
+            } else {
+                document.getElementById('modalTitle').innerText = 'Add New Section Entry';
+                document.getElementById('formTitle').value = '';
+                document.getElementById('formDescription').value = '';
+                document.getElementById('formAffiliation').value = '';
+            }
+
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const secKey = document.getElementById('formType').value;
+            const indexStr = document.getElementById('formIndex').value;
+            const title = document.getElementById('formTitle').value;
+            const description = document.getElementById('formDescription').value;
+            const affiliation = document.getElementById('formAffiliation').value;
+        
+            const newItem = { id: 'item-' + Date.now(), title, description };
+            if (secKey === 'masters' && affiliation) newItem.affiliation = affiliation;
+        
+            if (indexStr !== '') {
+                store.data[secKey].items[parseInt(indexStr)] = newItem;
+                showToast("Entry updated successfully");
+            } else {
+                store.data[secKey].items.push(newItem);
+                showToast("New entry added successfully");
+            }
+        
+            // Reset hidden edit tracker so subsequent edits start fresh
+            document.getElementById('formIndex').value = '';
+        
+            saveData();
+            closeModal();
+            renderAdminPortal();
+        }
+        function deleteItem(secKey, index) {
+            store.data[secKey].items.splice(index, 1);
+            saveData();
+            renderAdminPortal();
+            showToast("Item deleted");
+        }
+
+        function openVRegisterModal(index = null) {
+            const cat = store.activeVerifyTab;
+            document.getElementById('vFormCategory').value = cat;
+            document.getElementById('vFormIndex').value = index !== null ? index : '';
+
+            document.getElementById('vGroup-id').classList.add('hidden');
+            document.getElementById('vGroup-cert').classList.add('hidden');
+            document.getElementById('vGroup-judge').classList.add('hidden');
+            document.getElementById(`vGroup-${cat}`).classList.remove('hidden');
+
+            if (index !== null) {
+                const record = store.vData[cat][index];
+                document.getElementById('vModalTitle').innerText = 'Edit Verification Record';
+                document.getElementById('vFormId').value = record.id;
+                document.getElementById('vFormName').value = record.name;
+
+                if (cat === 'id') {
+                    document.getElementById('vFormRole').value = record.role || '';
+                    document.getElementById('vFormCountry').value = record.country || '';
+                } else if (cat === 'cert') {
+                    document.getElementById('vFormDegree').value = record.degree || '';
+                    document.getElementById('vFormSystem').value = record.system || '';
+                } else if (cat === 'judge') {
+                    document.getElementById('vFormLevel').value = record.level || '';
+                    document.getElementById('vFormStatus').value = record.status || '';
+                }
+            } else {
+                document.getElementById('vModalTitle').innerText = 'Add Verification Record';
+                document.getElementById('vFormId').value = '';
+                document.getElementById('vFormName').value = '';
+                document.getElementById('vFormRole').value = '';
+                document.getElementById('vFormCountry').value = '';
+                document.getElementById('vFormDegree').value = '';
+                document.getElementById('vFormSystem').value = '';
+                document.getElementById('vFormLevel').value = '';
+                document.getElementById('vFormStatus').value = '';
+            }
+
+            document.getElementById('vRegisterModal').classList.remove('hidden');
+        }
+
+        function closeVRegisterModal() {
+            document.getElementById('vRegisterModal').classList.add('hidden');
+        }
+
+        function handleVRegisterSubmit(e) {
+            e.preventDefault();
+            const cat = document.getElementById('vFormCategory').value;
+            const indexStr = document.getElementById('vFormIndex').value;
+            const id = document.getElementById('vFormId').value.trim();
+            const name = document.getElementById('vFormName').value.trim();
+        
+            const record = { id, name };
+        
+            if (cat === 'id') {
+                record.role = document.getElementById('vFormRole').value;
+                record.country = document.getElementById('vFormCountry').value;
+            } else if (cat === 'cert') {
+                record.degree = document.getElementById('vFormDegree').value;
+                record.system = document.getElementById('vFormSystem').value;
+            } else if (cat === 'judge') {
+                record.level = document.getElementById('vFormLevel').value;
+                record.status = document.getElementById('vFormStatus').value;
+            }
+        
+            if (indexStr !== '') {
+                store.vData[cat][parseInt(indexStr)] = record;
+                showToast("Verification record updated");
+            } else {
+                store.vData[cat].push(record);
+                showToast("New record added to verification register");
+            }
+        
+            // Reset hidden edit tracker so subsequent edits start fresh
+            document.getElementById('vFormIndex').value = '';
+        
+            saveData();
+            closeVRegisterModal();
+            renderAdminPortal();
+        }
+        function deleteVRecord(index) {
+            store.vData[store.activeVerifyTab].splice(index, 1);
+            saveData();
+            renderAdminPortal();
+            showToast("Record removed from register");
+        }
+
+        function openAddSectionModal() {
+            document.getElementById('secHeading').value = '';
+            document.getElementById('secBody').value = '';
+            document.getElementById('sectionModal').classList.remove('hidden');
+        }
+
+        function closeSectionModal() {
+            document.getElementById('sectionModal').classList.add('hidden');
+        }
+
+        function handleSaveSubSection(e) {
+            e.preventDefault();
+            const secKey = store.activeAdminTab;
+            const heading = document.getElementById('secHeading').value;
+            const body = document.getElementById('secBody').value;
+
+            store.data[secKey].items.push({
+                id: 'sub-' + Date.now(),
+                title: heading,
+                description: body
+            });
+
+            saveData();
+            closeSectionModal();
+            renderAdminPortal();
+            showToast("Custom sub-section created");
+        }
+
+        function resetAllData() {
+            store.data = JSON.parse(JSON.stringify(defaultData));
+            store.vData = JSON.parse(JSON.stringify(defaultVerificationDB));
+            saveData();
+            renderAdminPortal();
+            showToast("Restored all data to defaults");
+        }
+
+        // --- PUBLIC VERIFICATION SEARCH LOGIC ---
+        function switchVerifyTab(tab) {
+            store.activeVerifyTab = tab;
+            const idBtn = document.getElementById('vtab-id');
+            const certBtn = document.getElementById('vtab-cert');
+            const judgeBtn = document.getElementById('vtab-judge');
+            const label = document.getElementById('vSearchLabel');
+            const hint = document.getElementById('vSearchHint');
+
+            idBtn.className = "py-2 px-3 border-b-2 focus:outline-none " + (tab === 'id' ? "border-slate-700 text-slate-800" : "border-transparent text-slate-500 hover:text-slate-800");
+            certBtn.className = "py-2 px-3 border-b-2 focus:outline-none " + (tab === 'cert' ? "border-slate-700 text-slate-800" : "border-transparent text-slate-500 hover:text-slate-800");
+            judgeBtn.className = "py-2 px-3 border-b-2 focus:outline-none " + (tab === 'judge' ? "border-slate-700 text-slate-800" : "border-transparent text-slate-500 hover:text-slate-800");
+
+            if (tab === 'id') {
+                label.innerText = "Member Identification Code";
+                hint.innerText = 'Sample ID: Search "WCM-1001"';
+            } else if (tab === 'cert') {
+                label.innerText = "Dan Certificate Serial Number";
+                hint.innerText = 'Sample Certificate: Search "DAN-8802"';
+            } else if (tab === 'judge') {
+                label.innerText = "Judge / Referee License Number";
+                hint.innerText = 'Sample License: Search "REF-300"';
+            }
+
+            document.getElementById('vResultContainer').classList.add('hidden');
+        }
+
+        function handleVerificationSearch(e) {
+            e.preventDefault();
+            const query = document.getElementById('vSearchInput').value.trim().toUpperCase();
+            const container = document.getElementById('vResultContainer');
+            container.classList.remove('hidden');
+
+            const list = store.vData[store.activeVerifyTab] || [];
+            const match = list.find(item => item.id.toUpperCase() === query);
+
+            if (match) {
+                if (store.activeVerifyTab === 'id') {
+                    container.innerHTML = `
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+                            <div class="text-slate-800 mb-3">
+                                <span class="font-semibold text-sm">Verified Active Member</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+                                <div><span class="text-slate-400 block">ID Code:</span> <strong>${match.id}</strong></div>
+                                <div><span class="text-slate-400 block">Full Name:</span> <strong>${match.name}</strong></div>
+                                <div><span class="text-slate-400 block">Role:</span> <strong>${match.role}</strong></div>
+                                <div><span class="text-slate-400 block">Country:</span> <strong>${match.country}</strong></div>
+                            </div>
+                        </div>
+                    `;
+                } else if (store.activeVerifyTab === 'cert') {
+                    container.innerHTML = `
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+                            <div class="text-slate-800 mb-3">
+                                <span class="font-semibold text-sm">Verified Dan Certificate</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+                                <div><span class="text-slate-400 block">Serial Number:</span> <strong>${match.id}</strong></div>
+                                <div><span class="text-slate-400 block">Holder Name:</span> <strong>${match.name}</strong></div>
+                                <div><span class="text-slate-400 block">Dan Rank:</span> <strong>${match.degree}</strong></div>
+                                <div><span class="text-slate-400 block">Discipline:</span> <strong>${match.system}</strong></div>
+                            </div>
+                        </div>
+                    `;
+                } else if (store.activeVerifyTab === 'judge') {
+                    container.innerHTML = `
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+                            <div class="text-slate-800 mb-3">
+                                <span class="font-semibold text-sm">Verified Official License</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+                                <div><span class="text-slate-400 block">License Code:</span> <strong>${match.id}</strong></div>
+                                <div><span class="text-slate-400 block">Official Name:</span> <strong>${match.name}</strong></div>
+                                <div><span class="text-slate-400 block">Qualification:</span> <strong>${match.level}</strong></div>
+                                <div><span class="text-slate-400 block">License Status:</span> <strong>${match.status}</strong></div>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                container.innerHTML = `
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-slate-700 text-xs">
+                        <span class="font-semibold block mb-1">Record Not Found</span>
+                        <p class="text-slate-500">The code "${query}" is not registered in our database. Please contact your official representative.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = "bg-slate-800 text-white px-3.5 py-2 rounded-lg shadow-md text-xs font-normal flex items-center space-x-2 transition-all duration-300 z-50";
+            toast.innerHTML = `<span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
